@@ -71,6 +71,7 @@ if (String(process.env.ENABLE_AUDIT).toLowerCase() === 'true') {
 }
 
 // Routes
+console.log('📍 Registering routes...');
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/drugs', drugRoutes);
@@ -82,6 +83,7 @@ app.use('/api/v1/admin', adminRoutes);
 app.use('/api/v1/notifications', notificationRoutes);
 app.use('/api/v1/import', importRoutes);
 app.use('/api/v1/invoices', invoiceRoutes);
+console.log('✅ Routes registered successfully');
 
 // 404 handler
 app.all('*', (req, res, next) => {
