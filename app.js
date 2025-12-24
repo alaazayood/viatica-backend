@@ -70,8 +70,11 @@ if (String(process.env.ENABLE_AUDIT).toLowerCase() === 'true') {
   app.use(auditLogger);
 }
 
+const setupRoutes = require('./routes/setup.routes');
+
 // Routes
 console.log('📍 Registering routes...');
+app.use('/api/v1/setup', setupRoutes);
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/drugs', drugRoutes);
