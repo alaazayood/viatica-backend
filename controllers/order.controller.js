@@ -165,6 +165,12 @@ exports.updateOrderStatus = catchAsync(async (req, res, next) => {
   } else {
     return next(new AppError('ليست لديك صلاحية لتحديث الطلب', 403));
   }
+
+  // Validation: Cannot move to 'assigned' or 'out_for_delivery' without a driver
+  if ((status === 'assigned' || status === 'out_for_delivery') && !order.driver) {
+     return next(new AppError('لا يمكن تغيير الحالة قبل تعيين سائق للطلب', 400));
+  }
+
   order.status = status;
   await order.save();
 
