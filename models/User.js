@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema({
   warehouse: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: function () { return this.role === 'driver'; }
+    // required: function () { return this.role === 'driver'; } // Temporarily disabled for V0 simplicity
   },
   isVerified: {
     type: Boolean,
